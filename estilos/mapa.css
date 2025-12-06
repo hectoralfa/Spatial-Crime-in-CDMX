@@ -1,0 +1,630 @@
+
+
+/* =========================
+  LAYOUT PRINCIPAL
+  ========================= */
+
+body > .page {
+  flex: 1 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+body.mapa-page {
+  margin: 0;
+  padding: 0;
+  padding-top: 100px;
+  padding-bottom: 32px;
+}
+
+body.mapa-page .barra-logo {
+  position: fixed;
+  z-index: 9999;
+}
+
+html, body, .page {
+  height: 100%;
+  min-height: 100vh;
+}
+
+.main-content {
+  flex: 1 0 auto;
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  gap: 24px;
+  min-height: 0;
+  padding-left: 32px;
+  padding-right: 32px;
+  box-sizing: border-box;
+  padding-bottom: 32px; /
+}
+
+.sidebar {
+  width: 320px;
+  min-width: 260px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.mapa-main {
+  flex: 1 1 auto;
+  display: flex;
+  position: relative;
+  height: 100%;
+  min-height: 0;
+}
+
+#map {
+  width: 100%;
+  height: 100%;
+  min-height: 400px;
+  border-radius: 16px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1); 
+  background: none !important;
+  flex: 1 1 auto;
+}
+
+/* =========================
+  TARJETAS Y LEYENDAS
+  ========================= */
+.card-capas,
+.leyenda {
+  background: #fff;
+  padding: 16px;
+  border-radius: 16px;
+  box-sizing: border-box;
+  font-size: 14px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+  flex: 1 1 auto;
+  min-height: 0;
+}
+
+.card-capas {
+  max-height: 200px; 
+  min-height: 200;
+  overflow-y: auto;
+  flex: 1 1 auto;
+}
+
+.leyenda-header {
+  position: sticky;
+  top: 0;
+  background: white;
+  padding: 16px 16px 12px 16px;
+  z-index: 2;
+  border-bottom: 1px solid #eee;
+  box-shadow: 0 4px 6px -6px rgba(0,0,0,0.1);
+  margin: 0;
+}
+
+.leyenda-contenido {
+  padding: 12px 16px 16px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  overflow-y: auto;
+  max-height: 300px;
+}
+
+.card-capas h2,
+.card-capas .leyenda-header h4,
+.leyenda h4 {
+  font-size: 16px;
+  font-weight: 600;
+  color: #161A1D;
+  margin: 0;
+  padding: 0;
+}
+
+.leyenda-item {
+  display: flex;
+  max-height: 250px; 
+  min-height: 200;
+  align-items: center;
+  line-height: 1.4;
+  padding: 6px 0;
+}
+
+.leyenda-item img {
+  width: 18px;
+  height: 18px;
+  margin-right: 10px;
+  flex-shrink: 0;
+}
+
+.color-circulo {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  margin-right: 10px;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+/* =========================
+  SWITCHES
+  ========================= */
+.switch {
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px;
+  font-size: 14px;
+}
+
+/* Agregar más espaciado al primer switch para separarlo del título */
+.switch:first-child {
+  margin-top: 16px;
+}
+
+.switch input {
+  display: none;
+}
+
+.switch input:disabled + .slider {
+  background-color: #cccccc;
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.slider {
+  width: 40px;
+  height: 24px;
+  background-color: #DDDDDD;
+  border-radius: 100px;
+  position: relative;
+  margin-right: 12px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.slider::before {
+  content: "";
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  top: 2px;
+  left: 2px;
+  background-color: white;
+  border-radius: 50%;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  transition: transform 0.3s;
+}
+
+.switch input:checked + .slider {
+  background-color: #F3F3F3;
+}
+
+.switch input:checked + .slider::before {
+  transform: translateX(16px);
+}
+
+/* =========================
+  BOTONES DE CONTROL DEL MAPA
+  ========================= */
+.map-control-button {
+  width: 40px;
+  height: 40px;
+  background: white;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
+  position: absolute;
+  z-index: 1000;
+}
+
+.map-control-button:hover {
+  transform: scale(1.1);
+}
+
+.map-control-button:active {
+  transform: scale(0.95) translateY(1px);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.map-control-button svg, 
+.map-control-button img {
+  width: 24px;
+  height: 24px;
+  color: #161A1D;
+}
+
+#reset-button {
+  position: absolute;
+  right: 40px;
+  bottom: 40px;
+  z-index: 2;
+}
+
+/* =========================
+  GEOCODER
+  ========================= */
+.geocoder-float-container {
+  position: absolute;
+  top: 40px;
+  right: 40px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: transparent;
+  z-index: 10;
+  flex-direction: row-reverse;
+}
+
+.geocoder-panel {
+  width: 225x;
+  margin-left: 8px;
+  z-index: 10;
+}
+
+.geocoder-panel .maplibregl-geocoder {
+  display: block !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  width: 100% !important;
+  max-width: 100% !important;
+}
+
+geocoder-integrado .map-control-button {
+  position: static !important;
+  z-index: 40;
+  background: #fff;
+}
+
+
+/* --- Estilo para el marcador de ubicación --- */
+.maplibregl-marker svg {
+  display: none;
+}
+
+.maplibregl-marker::before {
+  content: '';
+  display: block;
+  background-image: url('imagenes/ubi.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 32px;
+  height: 48px;
+  transform: translate(-50%, -100%) rotateX(20deg) rotateY(5deg);
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.4));
+}
+
+
+/* DROPDOWNS */
+.dropdown-filtros-ubicacion {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  padding: 1rem;
+  max-height: 320px;      
+  overflow: visible; /* Permitir que el dropdown se salga */     
+}
+
+
+.dropdown-filtros-ubicacion select {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  font-family: 'Noto Sans', sans-serif;
+  font-size: 14px;
+  color: #000;
+  background-color: #fff;
+  height: 36px;
+  box-sizing: border-box;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: var(--dropdown-arrow-svg);
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 16px;
+  padding-right: 30px;
+  transition: border-color 0.3s ease;
+}
+
+.dropdown-filtros-ubicacion select:focus {
+  outline: none;
+  border-color: var(--Primary-Color-GOB-MX);
+}
+
+/* Hacer que el input de municipio se vea igual que el select */
+.dropdown-filtros-ubicacion input[type="text"] {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  font-family: 'Noto Sans', sans-serif;
+  background: #fff;
+  font-size: 14px;
+  color: #000;
+  height: 36px;
+  box-sizing: border-box;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: var(--dropdown-arrow-svg);
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 16px;
+  padding-right: 30px;
+  transition: border-color 0.3s ease;
+}
+
+.dropdown-filtros-ubicacion input[type="text"]:focus {
+  outline: none;
+  border-color: var(--Primary-Color-GOB-MX);
+}
+
+.dropdown-filtros-ubicacion input[type="text"]:disabled {
+  background-color: #f5f5f5;
+  color: #999;
+  cursor: not-allowed;
+}
+
+.dropdown-filtros-ubicacion input[type="text"]:not(:disabled):not(:focus) {
+  cursor: pointer;
+}
+
+.dropdown-filtros-ubicacion input[type="text"]:focus {
+  cursor: text;
+}
+
+.estado-container {
+  position: relative;
+  z-index: 1004;
+}
+
+#estado-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: white;
+  border: 1px solid #e0e0e0;
+  border-top: none;
+  border-radius: 0 0 10px 10px;
+  max-height: 200px;
+  overflow-y: auto;
+  z-index: 1005;
+  display: none;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  width: 100%;
+}
+
+.municipio-container {
+  position: relative;
+  z-index: 1002;
+}
+
+#municipio-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: white;
+  border: 1px solid #e0e0e0;
+  border-top: none;
+  border-radius: 0 0 10px 10px;
+  max-height: 200px;
+  overflow-y: auto;
+  z-index: 1003;
+  display: none;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  width: 100%;
+}
+
+.dropdown-filtros-ubicacion label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.grupo-estado {
+  margin-bottom: 1.5rem; 
+}
+
+.grupo-municipio {
+  margin-bottom: 1.5rem;
+}
+
+/* Contenedor de filtros - permitir que los dropdowns se salgan */
+.filtros-wrapper {
+  overflow: visible;
+  z-index: 1000;
+}
+
+/* =======================
+  POPUPS ELEGANTES
+  ======================= */
+
+/* Contenedor principal del popup */
+.maplibregl-popup {
+  z-index: 1050;
+}
+
+/* Contenido del popup */
+.maplibregl-popup-content {
+  background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%) !important;
+  border-radius: 12px !important;
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.12),
+    0 4px 16px rgba(0, 0, 0, 0.08),
+    0 0 0 1px rgba(255, 255, 255, 0.8) !important;
+  border: none !important;
+  padding: 16px 20px !important;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif !important;
+  font-size: 14px !important;
+  line-height: 1.5 !important;
+  color: #2d3748 !important;
+  min-width: 200px !important;
+  backdrop-filter: blur(10px) !important;
+  animation: popupFadeIn 0.2s ease-out !important;
+}
+
+/* Variantes de color para diferentes tipos de popup */
+.maplibregl-popup-content.popup-info {
+  background: linear-gradient(135deg, #ebf8ff 0%, #f7fafc 100%) !important;
+  border-left: 4px solid #3182ce !important;
+}
+
+.maplibregl-popup-content.popup-warning {
+  background: linear-gradient(135deg, #fffaf0 0%, #f7fafc 100%) !important;
+  border-left: 4px solid #ed8936 !important;
+}
+
+.maplibregl-popup-content.popup-danger {
+  background: linear-gradient(135deg, #fed7d7 0%, #f7fafc 100%) !important;
+  border-left: 4px solid #e53e3e !important;
+}
+
+/* Efectos de glassmorphism más pronunciados */
+.maplibregl-popup-content.glass-effect {
+  background: rgba(255, 255, 255, 0.85) !important;
+  backdrop-filter: blur(20px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(180%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+}
+
+/* Iconos pequeños para el popup */
+.maplibregl-popup-content .popup-icon {
+  display: inline-block !important;
+  width: 16px !important;
+  height: 16px !important;
+  margin-right: 6px !important;
+  vertical-align: middle !important;
+  opacity: 0.7 !important;
+}
+
+/* Mejoras en la tipografía */
+.maplibregl-popup-content .popup-label {
+  font-size: 12px !important;
+  color: #718096 !important;
+  font-weight: 500 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.05em !important;
+  margin-bottom: 2px !important;
+}
+
+.maplibregl-popup-content .popup-value {
+  font-size: 16px !important;
+  color: #2d3748 !important;
+  font-weight: 600 !important;
+  line-height: 1.2 !important;
+}
+
+/* Animación de entrada */
+@keyframes popupFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-12px) scale(0.92);
+    filter: blur(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0px);
+  }
+}
+
+/* Animación de salida */
+@keyframes popupFadeOut {
+  from {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0px);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-8px) scale(0.96);
+    filter: blur(2px);
+  }
+}
+
+/* Títulos en el popup */
+.maplibregl-popup-content strong {
+  color: #1a202c !important;
+  font-weight: 600 !important;
+  font-size: 15px !important;
+  display: block !important;
+  margin-bottom: 6px !important;
+  letter-spacing: -0.025em !important;
+}
+
+/* Texto del popup */
+.maplibregl-popup-content br + * {
+  color: #4a5568 !important;
+  font-size: 13px !important;
+  font-weight: 500 !important;
+}
+
+/* Punta del popup (flecha) */
+.maplibregl-popup-tip {
+  border-top-color: #ffffff !important;
+  border-width: 8px !important;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1)) !important;
+}
+
+/* Botón de cerrar (si se usa) */
+.maplibregl-popup-close-button {
+  color: #718096 !important;
+  font-size: 18px !important;
+  font-weight: 400 !important;
+  position: absolute !important;
+  top: 8px !important;
+  right: 12px !important;
+  padding: 4px !important;
+  border-radius: 6px !important;
+  transition: all 0.2s ease !important;
+}
+
+.maplibregl-popup-close-button:hover {
+  background-color: #edf2f7 !important;
+  color: #2d3748 !important;
+  transform: scale(1.1) !important;
+}
+
+/* Estilo especial para datos numéricos */
+.maplibregl-popup-content .popup-metric {
+  color: #3182ce !important;
+  font-weight: 600 !important;
+  font-size: 14px !important;
+}
+
+/* Estructura del popup */
+.maplibregl-popup-content .popup-header {
+  margin-bottom: 8px !important;
+  padding-bottom: 6px !important;
+  border-bottom: 1px solid #e2e8f0 !important;
+}
+
+.maplibregl-popup-content .popup-body {
+  color: #4a5568 !important;
+  font-size: 13px !important;
+  font-weight: 500 !important;
+  line-height: 1.4 !important;
+}
+
+/* Hover effect sutil */
+.maplibregl-popup-content:hover {
+  box-shadow: 
+    0 12px 40px rgba(0, 0, 0, 0.15),
+    0 6px 20px rgba(0, 0, 0, 0.1),
+    0 0 0 1px rgba(255, 255, 255, 0.9) !important;
+  transform: translateY(-1px) !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+#map {
+  min-height: 800px;
+}
