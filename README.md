@@ -3,7 +3,7 @@ Análisis geoespacial de delitos en la Ciudad de México utilizando KDE sobre re
 # Homicidios en la Red Vial de México 🚨🗺️
 
 > 📊 **Tablero interactivo disponible aquí:**  
-> 👉 [🔗 HAZ CLIC PARA VER EL TABLERO](TU_URL_DEL_TABLERO)
+> 👉 [🔗 HAZ CLIC PARA VER EL TABLERO](https://hectoralfa.github.io/Spatial-Crime-Analysis-CDMX/)
 
 o utiliza este botón:
 
