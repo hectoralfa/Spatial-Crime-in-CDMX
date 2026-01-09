@@ -1,4 +1,4 @@
-🌎 Language: [English](README.md) | [Spanish](README.es.md)
+🌎 Idioma: [Inglés](README.md) | [Español](README.es.md)
 
 # Análisis Espacial del Crimen en la CDMX
 
