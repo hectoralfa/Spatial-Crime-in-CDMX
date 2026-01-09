@@ -8,11 +8,11 @@ El proyecto genera mapas de **hotspots** y **coldspots** de crimen a partir de p
 ## 🚨 Tablero interactivo
 
 > 📊 **Tablero interactivo disponible aquí:**  
-> 👉 [🔗 HAZ CLIC PARA VER EL TABLERO](https://hectoralfa.github.io/Spatial-Crime-Analysis-CDMX/)
+> 👉 [🔗 HAZ CLIC PARA VER EL TABLERO](https://hectoralfa.github.io/Analisis-Espacial-del-Crimen-en-la-CDMX/)
 
 o utiliza este botón:
 
-[![Ver tablero interactivo](https://img.shields.io/badge/Ver%20tablero-Interactivo-blue?style=for-the-badge&logo=Tableau)](https://hectoralfa.github.io/Spatial-Crime-Analysis-CDMX/)
+[![Ver tablero interactivo](https://img.shields.io/badge/Ver%20tablero-Interactivo-blue?style=for-the-badge&logo=Tableau)](https://hectoralfa.github.io/Analisis-Espacial-del-Crimen-en-la-CDMX/)
 
 ---
 
