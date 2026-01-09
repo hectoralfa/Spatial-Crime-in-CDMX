@@ -24,7 +24,7 @@ Este proyecto analiza la **distribución espacial de delitos de robo en la Ciuda
 - Segmentación en *lixels*  
 - Representación como grafo  
 - **Kernel Density Estimation (KDE)** sobre red  
-- Estadístico **Getis-Ord Gi\*** para identificación de *hotspots*  
+- Estadístico **Getis-Ord Gi\*** para identificación de *hotspots*  y *coldspots*
 
 se construye un **tablero interactivo** que permite explorar zonas con mayor riesgo en los robos más comunes:  
 **robo a transporte/pasajero, robo en vía pública y robo a negocio** a lo largo de las vialidades de la CDMX.
@@ -33,6 +33,7 @@ El objetivo es aportar una herramienta útil para:
 
 - **Diseño y evaluación de políticas públicas**
 - **Áreas de seguridad, análisis de riesgo y planeación urbana**
+- **Distinguir entre concentraciones de robos que ocurren por azar y aquellas que realmente indican zonas de mayor riesgo**
 
 ---
 
@@ -45,7 +46,7 @@ Desarrollar una **herramienta digital geoespacial** que:
 - Identifique **tramos de calle** con riesgo elevado mediante técnicas estadísticas (Getis-Ord Gi\*).  
 - Permita **visualizar los resultados** de forma clara y accesible mediante un **tablero interactivo**.
 
-> 🔗 Acceso rápido: [Ver tablero interactivo](https://hectoralfa.github.io/Spatial-Crime-Analysis-CDMX/)
+> 🔗 Acceso rápido: [Ver tablero interactivo](https://hectoralfa.github.io/Analisis-Espacial-del-Crimen-en-la-CDMX/)
 
 ---
 
@@ -53,7 +54,6 @@ Desarrollar una **herramienta digital geoespacial** que:
 
 El estudio del crimen y la violencia requiere una mirada **integral** que combine:
 
-- Factores **sociales y económicos**
 - Características del **entorno urbano**
 - Estructura y conectividad de la **red vial**
 
@@ -62,6 +62,8 @@ En lugar de analizar solo puntos en un mapa, este proyecto considera **por dónd
 - Estimar mejor la **exposición al riesgo**  
 - Detectar **corredores de violencia**  
 - Apoyar decisiones de **seguridad y planeación urbana** con evidencia espacial.
+
+Si bien este proyecto tiene un enfoque principalmente exploratorio y descriptivo, su estructura permite, en trabajos futuros, integrar variables explicativas adicionales que ayuden a comprender los factores asociados a estos patrones espaciales. Por ejemplo: variables socioeconómicas, densidad poblacional, proximidad a transporte público, equipamiento urbano, presencia policial, entre otras.
 
 ---
 
@@ -72,8 +74,7 @@ La base del proyecto es la **red vial de la CDMX**, construida a partir de:
 - Información del **INEGI**  
 
 Se realiza un preprocesamiento para:
-
-- Corregir segmentos desconectados  
+  
 - Homogeneizar la red  
 - Preparar los datos para el análisis sobre *lixels* y grafos
 
@@ -95,16 +96,11 @@ Cada lixel se convierte en una unidad de análisis sobre la cual se calculan ind
 
 ## 🔗 Representación como grafo
 
-La red vial también se representa como un **grafo**:
-
-- **Nodos** → cruces o intersecciones  
-- **Aristas** → tramos de calle entre intersecciones  
-
-Esta representación permite:
+La red vial también se representa como un grafo. Esta representación permite:
 
 - Modelar la **conectividad** de la ciudad  
 - Entender cómo se pueden **propagar fenómenos** a lo largo de la red  
-- Integrar métricas de red (distancias, accesibilidad, rutas mínimas, etc.)
+- Integrar métricas de red (distancias, accesibilidad, etc.)
 
 ---
 
@@ -131,7 +127,7 @@ Se consideran:
 
 ## 🔥 Identificación de hotspots: Getis-Ord Gi\*
 
-KDE muestra dónde hay **concentraciones altas**, pero no dice si estas son **estadísticamente significativas**.
+KDE permite visualizar zonas con muchos robos, pero por sí solo no permite distinguir si estos patrones son producto del azar o si reflejan un comportamiento espacial estructurado.
 
 Para eso se utiliza el estadístico **Getis-Ord Gi\*** sobre los lixels, con el fin de:
 
